@@ -29,7 +29,7 @@ Reference: ICPC Sinchon 22 Summer 5회차 정수론
 //return [g, x, y] s.t. ax+by = gcd(a, b) = g
 tuple<ll, ll, ll> ext_gcd(ll a, ll b)
 {
-    if(b==0) return {a, 1, 0};
+    if(b==0) return {a, 1LL, 0LL};
     auto [g, x, y]=ext_gcd(b, a%b);
-    return {g, y, x-(a/b)*y};
+    return {g, y, x-a/b*y};
 }

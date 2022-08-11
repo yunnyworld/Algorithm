@@ -45,7 +45,7 @@ int find(int n) //O(1)
     return p[n];
 }
 
-void merge(int a, int b)
+void merge(int a, int b) //O(1)
 {
     a=find(a);
     b=find(b);
