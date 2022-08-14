@@ -41,14 +41,12 @@ int p[50]; //-1로 초기화
 int find(int n) //O(1)
 {
     if(p[n]<0) return n;
-    p[n]=find(p[n]); //경로 압축(path compression)
-    return p[n];
+    return p[n]=find(p[n]); //경로 압축(path compression)
 }
 
 void merge(int a, int b) //O(1)
 {
-    a=find(a);
-    b=find(b);
+    a=find(a); b=find(b);
     if(a==b) return ;
     p[a]+=p[b]; //루트가 -(집합 크기) 값을 갖고 있도록 해서, 집합 크기를 저장할 수 있다.
     p[b]=a;
