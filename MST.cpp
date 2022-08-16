@@ -45,7 +45,7 @@ int kruskal(vector<pair<int, int>>& selected) //MST에 포함된 간선의 목�
         int cost=edges[i].first;
         int u=edges[i].second.fisrt;
         int v=edges[i].second.second;
-        if(find[u]==find[v]) continue; //이미 u와 v가 연결되어 있을 경우 무시한다.
+        if(find(u)==find(v)) continue; //이미 u와 v가 연결되어 있을 경우 무시한다.
         merge(u, v);
         selected.push_back({u, v});
         ret+=cost;
