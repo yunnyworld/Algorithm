@@ -16,15 +16,15 @@ Reference : https://m.blog.naver.com/ndb796/221236874984
 int V;
 int inDegree[10];
 vector<int> adj[10];
-vector<int> TopologySort()
+vector<int> TopologySort() //위상 정렬의 결과를 리턴
 {
-    int ret[10];
+    vector<int> ret; 
     queue<int> q;
     
     for(int i=1;i<=V;i++) 
         if(inDegree[i]==0) q.push(i);
     
-    for(int i=1;i<=V;i++)
+    while(V--)
     {
         if(q.empty()) 
         {
@@ -32,12 +32,10 @@ vector<int> TopologySort()
             return ret;
         }
 
-        int x=q.front();
-        q.pop();
-        ret[i]=x;
+        int x=q.front(); q.pop();
+        ret.push_back(x);
         for(auto y : adj[x])
             if(--inDegree[y]==0) q.push(y);
-        
     }
     return ret;
 }
