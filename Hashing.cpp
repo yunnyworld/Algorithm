@@ -45,11 +45,13 @@ template<ll P, ll M> struct Hasing
         B[0]=1;
         for(int i=1;i<=S.size();i++) H[i]=(H[i-1]*P+S[i-1])%M;
         for(int i=1;i<=S.size();i++) B[i]=B[i-1]*P%M;
-        //주의) H[i], B[i]는 S[0]...S[i-1]까지의 해시값을 나타냄
+        //주의) H[i]는 S[0]...S[i-1]까지의 해시값을 나타냄
     }
-    ll get(int s, int e)
+    ll get(int s, int e) //주의) get(s, e)는 S[s]...S[e]까지의 해시값을 나타냄
     {
         ll res=(H[e]-H[s-1]*B[e-s+1])%M;
         return res>=0?res:res+M;
     }
 }
+
+Hashing<524287, 998244353> H1;

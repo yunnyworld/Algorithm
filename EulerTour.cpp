@@ -10,6 +10,7 @@ Reference: ICPC Shinchon 2022 Summer 중급 10회차
 v의 자손들은 in(v)와 out(v) 사이에 존재한다.
 in(v)와 out(v) 사이에는 v의 자손들만 존재한다.
 v의 서브트리를 수열의 구간으로 생각할 수 있다.
+누적합, 세그먼트 트리 등의 선형 자료 구조와 결합하기 좋다.
 */
 
 vector<int> childs[MAX_V];
