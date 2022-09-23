@@ -9,7 +9,7 @@ ll n;
 ll a[1005];
 ll dp[1005];
 
-//O(nlogn)
+//O(n^2)
 ll LIS()
 {
     for(ll i=0;i<n;i++)
@@ -25,7 +25,7 @@ ll LIS()
     return ans;
 }
 
-//O(n^2)
+//O(nlogn)
 ll idx[1005]; //a[i]의 ans 벡터 안에서의 인덱스
 ll LIS()
 {
@@ -40,7 +40,7 @@ ll LIS()
 
     ll s=ans.size()-1;
     for(ll i=n-1;i>=0;i--)
-        if(idx[i]==s) ans[s--]=c[i]; //LIS 수열
+        if(idx[i]==s) ans[s--]=a[i]; //LIS 수열
 
     return ans.size(); //LIS 길이
 }
