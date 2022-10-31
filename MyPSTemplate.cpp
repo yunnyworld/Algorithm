@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #define ll long long int
 #define pll pair<ll, ll>
+#define pdd pair<double, double>
 #define X first
 #define Y second
 using namespace std;
