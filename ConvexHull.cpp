@@ -46,7 +46,7 @@ ll ccw(pll a, pll b, pll c)
 bool comp(pll a, pll b) //180도 정렬, 기울기가 같은 경우에 거리가 가까운 것이 우선인 점 조심하기
 {
     if (a.Y * b.X == a.X * b.Y) return a.X * a.X + a.Y * a.Y < b.X* b.X + b.Y * b.Y;
-    else return a.Y * b.X < a.X * b.Y; //기준점이 가장 왼쪽 아래이므로, 항상 dx > 0이다.
+    else return a.Y * b.X < a.X * b.Y; //기준점이 가장 왼쪽 아래이므로, 항상 dx >= 0이다.
 }
 
 void GrahamScan()
