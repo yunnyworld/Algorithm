@@ -38,42 +38,52 @@ https://m.blog.naver.com/kks227/220857597424
 ll n;
 pll d[100005];
 
-double ccw(pdd a, pdd b, pdd c)
+ll ccw(pll a, pll b, pll c)
 {
-	return a.X * b.Y + b.X * c.Y + c.X * a.Y - a.X * c.Y - b.X * a.Y - c.X * b.Y;
+    return a.X * b.Y + b.X * c.Y + c.X * a.Y - a.X * c.Y - b.X * a.Y - c.X * b.Y;
 }
 
-bool comp(pdd a, pdd b) // 180도 정렬
+bool comp(pll a, pll b) //180도 정렬, 기울기가 같은 경우에 거리가 가까운 것이 우선인 점 조심하기
 {
-	return a.Y * b.X < a.X* b.Y;
+    if (a.Y * b.X == a.X * b.Y) return a.X * a.X + a.Y * a.Y < b.X* b.X + b.Y * b.Y;
+    else return a.Y * b.X < a.X * b.Y; //기준점이 가장 왼쪽 아래이므로, 항상 dx > 0이다.
 }
 
 void GrahamScan()
 {
-	sort(d, d + n);
-	
-	sort(d + 1, d + n, comp);
-	
-	stack<ll> st;
-	st.push(0); 
-	st.push(1);
-	ll nxt = 2;
-	while (nxt < n)
-	{
-		while (st.size() >= 2)
-		{
-			ll p, pp;
-			p = st.top();
-			st.pop();
-			pp = st.top();
-			if (ccw(d[pp], d[p], d[nxt]) > 0)
-			{
-				st.push(p);
-				break;
-			}
-		}
-		st.push(nxt++);
-	}
+    sort(d, d + n);
+    pll refer = d[0];
+    for (int i = 1; i < n; i++)
+    {
+        d[i].X -= refer.X;
+        d[i].Y -= refer.Y;
+    }
+    sort(d + 1, d + n, comp);
+    for (int i = 1; i < n; i++)
+    {
+        d[i].X += refer.X;
+        d[i].Y += refer.Y;
+    }
+    stack<ll> st;
+    st.push(0);
+    st.push(1);
+    ll nxt = 2;
+    while (nxt < n)
+    {
+        while (st.size() >= 2)
+        {
+            ll p, pp;
+            p = st.top(); 
+            st.pop();
+            pp = st.top();
+            if (ccw(d[pp], d[p], d[nxt]) > 0)
+            {
+                st.push(p);
+                break;
+            }
+        }
+        st.push(nxt++);
+    }
 }
 
 /*
@@ -88,12 +98,12 @@ O(nlogn)
 Reference: https://lem0nad3.tistory.com/131
 */
 
-vector<pdd> v(n);
+vector<pll> v(n);
 
 void TwoHalf()
 {
 	sort(v.begin(), v.end());
-	vector<pdd> L, R;
+	vector<pll> L, R;
 	for (auto i : d)
 	{
 
