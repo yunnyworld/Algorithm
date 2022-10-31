@@ -51,9 +51,8 @@ bool comp(pdd a, pdd b) // 180도 정렬
 void GrahamScan()
 {
 	sort(d, d + n);
-	pdd refer = d[0];
 	
-	sort(d, d + n, comp);
+	sort(d + 1, d + n, comp);
 	
 	stack<ll> st;
 	st.push(0); 
