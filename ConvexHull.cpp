@@ -29,7 +29,7 @@ dy/dx를 기준으로 오름차순으로 정렬하는데, dx=0일 수 있으니,
 
 실제 그라함 스캔 알고리즘은 O(n)므로, 볼록 껍질을 구하는 데에는 점들을 정렬하는데 걸리는 O(nlogn)이다.
 
-Reference: 
+Reference:
 https://wogud6792.tistory.com/14?category=315912
 https://lem0nad3.tistory.com/130
 https://m.blog.naver.com/kks227/220857597424
@@ -46,7 +46,7 @@ ll ccw(pll a, pll b, pll c)
 bool comp(pll a, pll b) //180도 정렬, 기울기가 같은 경우에 거리가 가까운 것이 우선인 점 조심하기
 {
     if (a.Y * b.X == a.X * b.Y) return a.X * a.X + a.Y * a.Y < b.X* b.X + b.Y * b.Y;
-    else return a.Y * b.X < a.X * b.Y; //기준점이 가장 왼쪽 아래이므로, 항상 dx >= 0이다.
+    else return a.Y * b.X < a.X* b.Y; //기준점이 가장 왼쪽 아래이므로, 항상 dx >= 0이다.
 }
 
 void GrahamScan()
@@ -73,7 +73,7 @@ void GrahamScan()
         while (st.size() >= 2)
         {
             ll p, pp;
-            p = st.top(); 
+            p = st.top();
             st.pop();
             pp = st.top();
             if (ccw(d[pp], d[p], d[nxt]) > 0)
@@ -90,7 +90,7 @@ void GrahamScan()
 반껍질 두 개를 구해서 합쳐주어 볼록 껍질 구하기
 
 이 방법도 그라함 스캔 알고리즘을 일부분 차용한다.
-하지만, 이 방법은 각도 정렬을 하지 않아도 되어서 편하다. 
+하지만, 이 방법은 각도 정렬을 하지 않아도 되어서 편하다.
 주의해야 할 점으로는, 각 반껍질의 양 끝 점이 겹치기 때문에 이를 빼주어야 한다.
 
 O(nlogn)
@@ -102,13 +102,17 @@ vector<pll> v(n);
 
 void TwoHalf()
 {
-	sort(v.begin(), v.end());
-	vector<pll> L, R;
-	for (auto i : d)
-	{
-
-	}
-	v.clear();
-	for (ll i = 0; i < R.size() - 1; i++) v.push_back(R[i]);
-	for (ll i = L.size() - 1; i > 0; i--) v.push_back(L[i]);
+    sort(v.begin(), v.end());
+    vector<pll> L, R; //L은 반시계 방향, R은 시계방향의 반껍질
+    for (auto i : d)
+    {
+        while (L.size() >= 2 && ccw(L[L.size() - 2], L[L.size() - 1], i) <= 0) L.pop_back();
+        L.push_back(i);
+        while (R.size() >= 2 && ccw(R[R.size() - 2], R[R.size() - 1], i) >= 0) R.pop_back();
+        R.push_back(i);
+    }
+    v.clear();
+    //반시계 방향으로 저장
+    for (ll i = 0; i < L.size() - 1; i++) v.push_back(L[i]);
+    for (ll i = R.size() - 1; i > 0; i--) v.push_back(R[i]);
 }
