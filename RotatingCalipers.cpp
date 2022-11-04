@@ -31,6 +31,7 @@ ll ccw(const pll a, const pll b)
 }
 
 vector<pll> v; //볼록 껍질 위의 점만 있어야 한다. 
+int n = v.size();
 int r = 0;
 ll ans = 0;
 for (int i = 0; i < n; i++)
