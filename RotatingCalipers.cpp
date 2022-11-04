@@ -35,7 +35,7 @@ ll ans = 0;
 for (int i = 0; i < n; i++)
 {
     // A, B, D - C + B
-    while (r < n * 2 && ccw(v[i], v[(i + 1) % n], v[(r + 1) % n] - v[r % n] + v[(i + 1) % n]) >= 0)
+    while (r < n * 2 && ccw(v[i], v[(i + 1) % n],  v[(i + 1) % n] + v[(r + 1) % n] - v[r % n]) >= 0)
     {
         ans = max(ans, dist(v[i], v[r % n])); // A, D
         r++;
