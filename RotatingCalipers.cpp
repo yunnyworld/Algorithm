@@ -22,7 +22,7 @@ pll operator - (const pll a, const pll b)
 
 ll dist(const pll a, const pll b)
 {
-    return (a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y)
+    return (a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y);
 }
 
 ll ccw(const pll a, const pll b)
@@ -30,6 +30,7 @@ ll ccw(const pll a, const pll b)
     return a.X * b.Y + b.X * c.Y + c.X * a.Y - a.X * c.Y - b.X * a.Y - c.X * b.Y;
 }
 
+vector<pll> v; //볼록 껍질 위의 점만 있어야 한다. 
 int r = 0;
 ll ans = 0;
 for (int i = 0; i < n; i++)
