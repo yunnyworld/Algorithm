@@ -113,6 +113,6 @@ void TwoHalf()
     }
     v.clear();
     //반시계 방향으로 저장
-    for (ll i = 0; i < L.size() - 1; i++) v.push_back(L[i]);
-    for (ll i = R.size() - 1; i > 0; i--) v.push_back(R[i]);
+    for (ll i = 0; i < L.size() - 1; i++) v.push_back(L[i]); // i == L.size() - 1 제외
+    for (ll i = R.size() - 1; i > 0; i--) v.push_back(R[i]); // i == 0 제외
 }
