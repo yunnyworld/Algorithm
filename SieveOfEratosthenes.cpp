@@ -104,6 +104,6 @@ void GetDivisor()
 {
 	int n = 1000000;
 	for (int i = 1; i <= n; i++)
-		for (int j = i; j <= n; j++) fac[j]++;
+		for (int j = i; j <= n; j+=i) fac[j]++;
 }
 
