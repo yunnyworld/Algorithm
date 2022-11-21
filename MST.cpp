@@ -32,7 +32,7 @@ int kruskal(vector<pair<int, int>>& selected) //MST에 포함된 간선의 목�
     int ret=0;
     selected.clear(); 
     vector<pair<int, pair<int, int>>> edges; //(가중치, (정점1, 정점2))
-    for(int u=0;i<V;u++)
+    for(int u=0;u<V;u++)
         for(int i=0;i<adj[u].size();i++)
         {
             int v=adj[u][i].first; 
