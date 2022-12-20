@@ -55,6 +55,23 @@ void update_range(ll node, ll s, ll e, ll l, ll r, ll diff) //원하는 범위�
     }
 }
 
+void update_range2(ll node, ll s, ll e, ll l, ll r, ll diff) //원하는 범위의 값을 업데이트 한다. O(logn)
+{
+    update_lazy(node, s, e); //lazy값이 남아있으면 갱신
+    if(l>e || s>r) return ;
+    if(l<=s && e<=r)
+    {
+        lazy[node]+=val;
+        update_lazy(node, s, e);
+    }
+    else
+    {
+        update_range2(node*2, s, (s+e)/2, l, r, diff);
+        update_range2(node*2+1, (s+e)/2+1, e, l, r, diff);
+        tree[node]=tree[node*2]+tree[node*2+1];
+    }
+}
+
 ll query(ll node, ll s, ll e, ll l, ll r) //기존 세그먼트 트리 코드와 동일하다. O(logn)
 {
     update_lazy(node, s, e);
