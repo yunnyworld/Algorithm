@@ -41,9 +41,17 @@ int d[100005];
 int p[22][100005]; //log(2*1e6) = 21
 vector<int> g[100005];
 
-void dfs(int v, int b=-1)
+void dfs(ll now, ll par)
 {
-    for(auto i : g[v]) if(i!=b) d[i]=d[v]+1, p[0][i]=v, dfs(i, v);
+	for (auto nxt : g[now])
+	{
+		if (nxt != par)
+		{
+			p[0][nxt] = now;
+			d[nxt] = d[now] + 1;
+			dfs(nxt, now);
+		}
+	}
 }
 
 int LCA(int u, int v)
