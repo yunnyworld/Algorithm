@@ -68,4 +68,10 @@ void UpperBound()
 C++ STL
 lower_bound(first, last, value)
 upper_bound(first, last, value)
+
+Reference: https://rebro.kr/36
+
+lower_bound는 [first, last)의 범위에서 val보다 '크거나 같은' 원소 들 중 첫 번째 원소의 Iterator, 배열인 경우에는 원소의 주솟값이 반환 된다.
+upper_bound는 [first, last)의 범위에서 val보다 '큰' 원소 들 중 첫 번째 원소의 Iterator, 배열인 경우에는 원소의 주소값이 반환 된다. 
+쉽게 말해서, 처음으로 val보다 큰 값이 나오는 위치를 반환한다. 
 */
