@@ -18,6 +18,15 @@ void Eratosthenes()
     }
 }
 
+//간단한 구현
+ll N;
+bool notP[4000005];
+void Eratosthenes2()
+{
+	for (ll i = 2; i <= N; i++)
+		for (ll j = i * i; j <= N; j += i) notP[j] = 1;
+}
+
 /*
 각 2부터 n까지의 자연수 k에 대해, "k가 갖는 가장 작은 소인수"를 계산하기
 O(nlogn)
