@@ -8,7 +8,7 @@ b = 0 이면 ax + 0 = a, (x, y)=(1, 0)
 유클리드 호제법의 종료 조건과 동일하다.
 
 ax + by = gcd(a, b) = bx' + ry'
-                    = bx' + (a-qb)y'
+                    = bx' + (a-qb)y' (a=b*q+r, q=[a/b])
                     = ay' + b(x'-qy')
 (x, y) = (y', x'-qy') = (y', x'-[a/b]y')
 
