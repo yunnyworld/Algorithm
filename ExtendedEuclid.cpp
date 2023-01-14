@@ -19,6 +19,14 @@ bx' + ry' = gcd(b, r)의 답을 이용해
 ax + by = gcd(a, b)의 답을 구할 수 있으므로
 유클리드 호제법과 동일한 방법으로 해결할 수 있다.
 
+이때, ax + by = gcd(a, b)에서 
+x는 x + bT, y는 y -aT의 모든 집합을 답으로 가질 수 있다.
+
+proof)
+ax + by = gcd(a, b)
+ax + by + abT - abT = gcd(a, b)
+a(x + bT) + b(y - aT) = gcd(a, b)
+
 
 선형 디오판토스 방정식
 - ax + by = c 의 정수해를 구하는 방정식
