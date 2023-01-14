@@ -7,16 +7,17 @@ using namespace std;
 b = 0 이면 ax + 0 = a, (x, y)=(1, 0)
 유클리드 호제법의 종료 조건과 동일하다.
 
-ax + by = gcd(a, b) = bx' + ry'
-                    = bx' + (a-qb)y' (a=b*q+r, q=[a/b])
-                    = ay' + b(x'-qy')
-(x, y) = (y', x'-qy') = (y', x'-[a/b]y')
+proof) ax + by = gcd(a, b) -> bx' + ry' = gcd(b, r) (r = a%b)
+1. gcd(a, b) = gcd(b, r) (Euclidean Algorithm)
+2. ax + by = bx' + ry'
+           = bx' + (a-qb)y' (a=b*q+r, q=[a/b])
+           = ay' + b(x'-qy')
+   -> (x, y) = (y', x'-qy') = (y', x'-[a/b]y')
 
 위와 같이 
 bx' + ry' = gcd(b, r)의 답을 이용해 
 ax + by = gcd(a, b)의 답을 구할 수 있으므로
 유클리드 호제법과 동일한 방법으로 해결할 수 있다.
-
 
 
 선형 디오판토스 방정식
