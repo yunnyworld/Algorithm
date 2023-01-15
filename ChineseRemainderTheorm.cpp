@@ -15,6 +15,7 @@ a=a2 (mod m2) <-> a=a2-m2y 를 만족하는 정수 y 존재
 - a2-a1=0 (mod gcd(m1, m2)) 이면 해 존재, 아니면 해 없음
 - 확장 유클리드로 x 구한 다음, a=a1+m1x 계산하면 된다
 - a는 0이상 lcm(m1, m2)미만에서 유일하다 -> 증명은 나중에 해보자
+m1x+m2y=gcd(m1, m2) * ((a2-a1)/gcd(m1, m2))
 
 Reference: 
 ICPC Sinchon 22 Summer 5회차 정수론
