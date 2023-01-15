@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #define ll long long int
+#define pll pair<ll, ll>
 using namespace std;
 /*
 중국인의 나머지 정리
@@ -38,7 +39,7 @@ tuple<ll, ll, ll> ext_gcd(ll a, ll b)
     return {g, y, x-(a/b)*y};
 }
 
-pair<ll, ll> crt(ll a1, ll m1, ll a2, ll m2)
+pll crt(ll a1, ll m1, ll a2, ll m2)
 {
     ll g=gcd(m1, m2), m=lcm(m1, m2);
     if((a2-a1)%g) return {-1, -1};
@@ -47,7 +48,7 @@ pair<ll, ll> crt(ll a1, ll m1, ll a2, ll m2)
     return {(a1+m1*x)%m, m};
 }
 
-pair<ll, ll> crt(const vector<ll> &a, const vector<ll> &m)
+pll crt(const vector<ll> &a, const vector<ll> &m)
 {
     ll ra=a[0], rm=m[0];
     for(int i=1;i<m.size();i++)
