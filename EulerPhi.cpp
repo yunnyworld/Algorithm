@@ -14,12 +14,18 @@ Euler Phi function (오일러 피 함수)
 */
 ll phi(ll n)
 {
-    ll res=n;
-    for(ll p=2;p*p<=n;p++)
-        if(n%p==0)
+    ll res = n;
+    for (ll p = 2; p * p <= n; p++)
+        if (n % p == 0)
         {
-            while(n%p==0) n/=p;
-            res*=(p-1)/p;
+            while (n % p == 0) n /= p;
+            res /= p;
+            res *= p - 1;
         }
+    if (n > 1)
+    {
+        res /= n;
+        res *= n - 1;
+    }
     return res;
 }
