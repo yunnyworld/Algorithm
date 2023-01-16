@@ -4,7 +4,7 @@ using namespace std;
 /*
 Lucas's Theorem (루카스 정리, 뤼카 정리)
 : nCr (mod p)를 O(p + logp + qlogn)으로 구할 수 있다.
-- p가 작고 n이 클 때 이용
+- 소수 p가 작고 n이 클 때 이용
 - n, r을 p진법으로 전개한 이후 n_iCr_i들의 곱은 nCr과 mod p에서 합동임
 - 증명은 어려우니 생략
 */
