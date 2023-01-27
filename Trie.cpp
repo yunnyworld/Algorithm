@@ -102,3 +102,27 @@ int main()
     c+=1;
     cout<<*c; //b
 }
+
+/*
+간결한 구현
+멤버 함수를 구현할 때,
+- 문자열의 끝 처리
+- 없는 노드 생성 처리
+- 다음 노드 방문 처리
+이 세 가지 까먹지 말고 포함하기
+*/
+struct Trie
+{
+	Trie* ch[26];
+	
+	Trie()
+	{
+		fill(ch, ch + 26, nullptr);
+	}
+	~Trie()
+	{
+		for (int i = 0; i < 26; i++) delete ch[i];
+	}
+    void insert(const char* s);
+    void find(const char* s);
+};
