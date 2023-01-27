@@ -52,7 +52,7 @@ vector<int> GetFail(const string &p)
 {
     int m=p.size();
     vector<int> fail(m);
-    fail[0]=0;
+    fail[0]=0; // 초기 조건
     for(int i=1,j=0; i<m; i++) //i = 0~i 범위의 부분 문자열의 맨 뒤 인덱스, j = prefix와 suffix가 같을 때의 prefix의 맨 뒤 인덱스
     {
         while(j>0 && p[i]!=p[j]) j=fail[j-1];
