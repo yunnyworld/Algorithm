@@ -34,13 +34,17 @@ vector<pll> v; //볼록 껍질 위의 점만 있어야 한다.
 int n = v.size();
 int r = 0;
 ll ans = 0;
-for (int i = 0; i < n; i++)
+
+void RotatingCalipers()
 {
-    // A, B, D - C + B
-    while (r < n * 2 && ccw(v[i], v[(i + 1) % n],  v[(i + 1) % n] + v[(r + 1) % n] - v[r % n]) >= 0)
+    for (int i = 0; i < n; i++)
     {
-        ans = max(ans, dist(v[i], v[r % n])); // A, D
-        r++;
+        // A, B, D - C + B
+        while (r < n * 2 && ccw(v[i], v[(i + 1) % n],  v[(i + 1) % n] + v[(r + 1) % n] - v[r % n]) >= 0)
+        {
+            ans = max(ans, dist(v[i], v[r % n])); // A, D
+            r++;
+        }
+        ans = max(ans, dist(v[i], v[r % n]));
     }
-    ans = max(ans, dist(v[i], v[r % n]));
 }
