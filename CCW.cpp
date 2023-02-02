@@ -34,10 +34,15 @@ ll ccw(pll A, pll B, pll C)
 }
 
 /*
-CCW를 이용한 두 선분의 교차 여부 판단
+CCW를 이용한 두 '직선'의 교차 여부 판단
 O(1)
-ccw(A, B, C) * ccw(A, B, D) < 0 이면, 선분 AB와 선분 CD는 교차하고 있다.
+ccw(A, B, C) * ccw(A, B, D) < 0 이면, 직선 AB와 직선 CD는 교차하고 있다.
 Reference: https://wogud6792.tistory.com/12?category=315912
+
+CCW를 이용한 두 '선분'의 교차 여부 판단
+O(1)
+ccw(A, B, C) * ccw(A, B, D) < 0 && ccw(C, D, A) * ccw(C, D, B) < 0 이면, 선분 AB와 선분 CD는 교차하고 있다.
+Reference: https://jason9319.tistory.com/358
 */
 
 /*
