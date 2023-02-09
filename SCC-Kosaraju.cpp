@@ -9,7 +9,7 @@ SCC를 구하는 알고리즘 중 Kosaraju's Algorithm
 - dfs를 할 때마다 SCC를 한 개씩 찾음
 
 - O(V+E)
-- 위상 정렬 순서대로 SCC를 구함, DFS Tree의 위쪽부터 떼어낸다고 생각해 보자.
+- "위상 정렬 순서대로" SCC를 구함, DFS Tree의 위쪽부터 떼어낸다고 생각해 보자.
 
 Reference: https://justicehui.github.io/hard-algorithm/2019/01/04/SCC_1/
 https://www.acmicpc.net/problem/2150 : 이 문제를 해결하면서 이해하자
