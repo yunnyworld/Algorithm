@@ -3,6 +3,7 @@
 #define pll pair<ll, ll>
 #define X first
 #define Y second
+#define all(v) v.begin(),v.end()
 using namespace std;
 const ll INF = 987654321;
 const ll MOD = 1e9 + 7;
