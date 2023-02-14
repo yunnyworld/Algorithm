@@ -30,7 +30,7 @@ tuple<ll, ll, ll> ext_gcd(ll a, ll b)
 	return { g, y, x - a / b * y };
 }
 
-ll modInv(ll a)
+ll modInv(ll a) // 보장된 것이 아니니 조심해서 사용하자
 {
 	return mod(get<1>(ext_gcd(a, MOD)), MOD);
 }
