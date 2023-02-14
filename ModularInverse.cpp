@@ -2,8 +2,10 @@
 #define ll long long int
 using namespace std;
 const ll MOD = 998244353;
-// Modular Inverse(모듈러 역원)
-
+/*
+Modular Inverse(모듈러 역원)
+Reference: https://seastar105.tistory.com/65
+*/
 /*
 1. 확장 유클리드 알고리즘 이용
 
