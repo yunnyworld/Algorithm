@@ -7,7 +7,7 @@ Reference:
 https://justicehui.github.io/tutorial/
 https://m.blog.naver.com/kks227/220804885235?referrerCode=1
 
-Ford-Fulkerson 알고리즘은 DFS나 BFS를 이용해 탐색을 하면 O(V+E)가 들고, 최대 유량을 f라 하면,
+Ford-Fulkerson 알고리즘은 DFS를 이용해 탐색을 하면 O(V+E)가 들고, 최대 유량을 f라 하면,
 시간 복잡도는 O(Ef)가 된다. 만약 f가 매우 큰 수라면 시간이 오래 걸릴 수 있다. 
 BFS를 이용해 증가 경로를 탐색한 Edmonds-Karp 알고리즘을 이용하면 O(VE^2)만에 최대 유량을 구할 수 있다.
 시간 복잡도의 증명은 지금은 잘 이해 안되니, 나중에 다시 이해해보자.
