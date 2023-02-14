@@ -18,6 +18,11 @@ ax + My = 1 (y = -k)
 a^(-1) = x
 	   = get<ext_gcd(a, M)>(1);
 */
+ll mod(ll a, ll b)
+{
+	return (a % b >= 0 ? a : a + b);
+}
+
 tuple<ll, ll, ll> ext_gcd(ll a, ll b)
 {
 	if (b == 0) return { a, 1LL, 0LL };
@@ -27,7 +32,7 @@ tuple<ll, ll, ll> ext_gcd(ll a, ll b)
 
 ll modInv(ll a)
 {
-	return get<1>(ext_gcd(a, MOD));
+	return mod(get<1>(ext_gcd(a, MOD)), MOD);
 }
 
 /*
