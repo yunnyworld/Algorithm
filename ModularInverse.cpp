@@ -51,7 +51,7 @@ ll pow(ll a, ll x)
 	if (x == 0) return 1ll;
 	ll ret = pow(a, x / 2);
 	ret = ret * ret % MOD;
-	if (x % 2) ret = ret * 2 % MOD;
+	if (x % 2) ret = ret * a % MOD;
 	return ret;
 }
 
