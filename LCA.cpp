@@ -68,7 +68,7 @@ int main()
 {
     cin>>n;
     for(int i=1, s, e;i<n;i++) cin>>s>>e, g[s].push_back(e), g[e].push_back(s);
-    dfs(1); //루트의 정점번호가 1
+    dfs(1, 0); //루트의 정점번호가 1
     for(int i=1;i<22;i++) for(int j=1;j<=n;j++) p[i][j]=p[i-1][p[i-1][j]]; //전처리
     
     cin>>q;
