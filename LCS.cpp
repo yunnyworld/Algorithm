@@ -40,19 +40,16 @@ a[i]!=b[j] : d[i][j]=max(d[i-1][j], d[i][j-1])
 */
 void LCS2()
 {
-    string a, b; cin>>a>>b;
-    a="0"+a; 
-    b="0"+b;
-    for(int i=1;i<a.length();i++)
-    {
-        for(int j=1;j<b.length();j++)
+    string a, b; cin >> a >> b;
+    a = ' ' + a;
+    b = ' ' + b;
+    ll ans = 0;
+    for (int i = 1; i < a.length(); i++)
+        for (int j = 1; j < b.length(); j++)
         {
-            if(a[i]==b[j]) d[i][j]=d[i-1][j-1]+1;
-            else d[i][j]=max(d[i-1][j], d[i][j-1]);
+            d[i][j] = max(d[i - 1][j], d[i][j - 1]);
+            if (a[i] == b[j]) d[i][j] = d[i - 1][j - 1] + 1;
+            ans = max(ans, d[i][j]);
         }
-    }
-    int ans=0;
-    for(int i=0;i<a.length();i++) for(int j=0;j<b.length();j++)
-        if(d[i][j]>ans) ans=d[i][j];
-    cout<<ans<<'\n';
+    cout << ans;
 }
