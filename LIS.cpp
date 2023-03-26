@@ -12,18 +12,15 @@ ll dp[1005];
 //O(n^2)
 ll LIS()
 {
-    for(ll i=0;i<n;i++)
-    {
-        ll mx=0;
-        for(ll j=0;j<i;j++) 
-            if(a[j]<a[i]) mx=max(mx, dp[j]);
-        dp[i]=mx;
-    }
-    
-    ll ans=0;
-    for(ll i=0;i<n;i++) ans=max(ans, dp[i]);
-    return ans;
+    for (ll i = 0; i < n; i++)
+        for (ll j = 0; j < i; j++)
+            if (a[j] < a[i]) dp[i] = max(dp[i], dp[j]);
+
+    ll ret = 0;
+    for (ll i = 0; i < n; i++) ret = max(ret, dp[i]);
+    return ret;
 }
+
 
 //O(nlogn)
 ll idx[1005]; //a[i]의 ans 벡터 안에서의 인덱스
