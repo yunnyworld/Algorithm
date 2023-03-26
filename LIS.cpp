@@ -13,9 +13,11 @@ ll dp[1005];
 ll LIS()
 {
     for (ll i = 0; i < n; i++)
+    {
+        dp[i] = 1;
         for (ll j = 0; j < i; j++)
-            if (a[j] < a[i]) dp[i] = max(dp[i], dp[j]);
-
+            if (a[j] < a[i]) dp[i] = max(dp[i], dp[j] + 1);
+    }
     ll ret = 0;
     for (ll i = 0; i < n; i++) ret = max(ret, dp[i]);
     return ret;
