@@ -32,13 +32,11 @@ void EdmondsKarp()
         {
             ll now=q.front(); q.pop();
             for(auto nxt : g[now])
-            {
                 if(par[nxt]==-1 && c[now][nxt]-f[now][nxt]>0)
                 {
                     q.push(nxt); par[nxt]=now;
                     if(nxt==e) break;
                 }
-            }
         }
         if(par[e]==-1) break; //더 이상 유량을 흘려보낼 수 없다.
 
