@@ -35,7 +35,7 @@ Reference: ICPC Sinchon 22 Summer 7회차 문자열
 
 https://modoocode.com/219 : template 이해하기
 */
-template<ll P, ll M> struct Hasing
+template<ll P, ll M> struct Hashing
 {
     vector<ll> H, B;
     void build(const string &S)
@@ -52,6 +52,6 @@ template<ll P, ll M> struct Hasing
         ll res=(H[e]-H[s-1]*B[e-s+1])%M;
         return res>=0?res:res+M;
     }
-}
+};
 
 Hashing<524287, 998244353> H1;
