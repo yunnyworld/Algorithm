@@ -14,13 +14,17 @@ bool isInCh(vector<pii> &v, pii pt) //v에는 반시계 방향으로 정렬된 �
     if (v.size() == 2) return ccw(v[0], v[1], pt) == 0 && v[0] <= pt && pt <= v[1];
 
     int vs = v.size();
-    if (ccw(v[vs - 1], v[0], pt) < 0 || ccw(v[0], v[1], pt) < 0) return false;
-    int lo = 1, hi = vs - 1;
-    while (lo < hi)
-    {
-        int mid = (lo + hi) / 2;
-        if (ccw(v[0], v[mid], pt) >= 0) lo = mid + 1;
-        else hi = mid;
-    }
-    return ccw(v[lo - 1], v[lo], pt) >= 0;
+	if (ccw(v[vs - 1], v[0], pt) < 0 || ccw(v[0], v[1], pt) < 0) return 0;
+	int lo = 1, hi = vs - 1, res = vs - 1;
+	while (lo <= hi)
+	{
+		int mid = (lo + hi) / 2;
+		if (ccw(v[0], v[mid], pt) >= 0) lo = mid + 1;
+		else
+		{
+			res = mid;
+			hi = mid - 1;
+		}
+	}
+	return ccw(v[res - 1], v[res], pt) >= 0;
 }
