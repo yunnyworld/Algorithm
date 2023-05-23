@@ -104,7 +104,7 @@ void TwoHalf()
 {
     sort(v.begin(), v.end());
     vector<pll> L, R; //L은 반시계 방향, R은 시계방향의 반껍질
-    for (auto i : d)
+    for (auto i : v)
     {
         while (L.size() >= 2 && ccw(L[L.size() - 2], L[L.size() - 1], i) <= 0) L.pop_back();
         L.push_back(i);
