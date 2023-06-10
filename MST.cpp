@@ -65,7 +65,7 @@ int prim(vector<pair<int, int>>& selected) //MST에 포함된 간선의 목록�
     selected.clear();
     vector<bool> added(V, false); //해당 정점이 트리에 포함되어 있나?
     vector<int> minWeight(V, INF), parent(V, -1); //트리에 인접한 간선 중 해당 정점에 닿는 최소 간선의 정보를 저장한다.
-    minWeight[0]=parend[0]=0;
+    minWeight[0]=parent[0]=0;
     for(int iter=0;iter<V;iter++)
     {
         //다음에 트리에 추가할 정점 u를 찾는다.
