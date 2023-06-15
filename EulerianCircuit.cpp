@@ -9,8 +9,9 @@ int n, s = 1;
 int deg[1005];
 int mat[1005][1005];
 vector<int> g[1005];
+vector<int> ans;
 
-void dfs(int now)
+void Eulerian(int now)
 {
 	while (g[now].size())
 	{
@@ -23,7 +24,7 @@ void dfs(int now)
 			dfs(nxt);
 		}
 	}
-	cout << now << ' ';
+	ans.push_back(now);
 }
 
 void solve()
@@ -50,6 +51,7 @@ void solve()
 		else if (deg[i] > 0) s = i;
 	}
 	dfs(s);
+	// 단방향에서는 reverse(all(ans)); 가 필요하다
 }
 
 int main()
