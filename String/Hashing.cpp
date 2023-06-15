@@ -55,3 +55,14 @@ template<ll P, ll M> struct Hashing
 };
 
 Hashing<524287, 998244353> H1;
+
+/*
+Hashing without get (simple implementation)
+*/
+ll Hashing(const string &s)
+{
+    ll P, M, H=0;
+    for(int i=1;i<=s.length();i++)
+        H=(H*P+s[i-1])%M;
+    return H;
+}
