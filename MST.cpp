@@ -93,3 +93,34 @@ int prim(vector<pair<int, int>>& selected) //MST에 포함된 간선의 목록�
     }
     return ret;
 }
+
+// https://boj.kr/1922
+ll V, E, ans;
+bool v[1005];
+vector<pll> g[1005];
+
+void solve()
+{
+	cin>>V>>E;
+	for(int i=0;i<E;i++)
+	{
+		ll a, b, c; cin>>a>>b>>c;
+		g[a].push_back({b, c});
+		g[b].push_back({a, c});
+	}
+	// Prim
+	priority_queue<pll> pq; //{-weight, node}
+	v[1]=1;
+	for(auto i : g[1]) if(!v[i.X]) pq.push({-i.Y, i.X});
+	for(int i=0;i<V-1;i++)
+	{
+		while(v[pq.top().Y]) pq.pop();
+		ll x=pq.top().Y;
+		ll w=-pq.top().X;
+		pq.pop();
+		v[x]=1;
+		ans+=w;
+		for(auto j : g[x]) if(!v[j.X]) pq.push({-j.Y, j.X});
+	}
+	cout<<ans;
+}
