@@ -1,12 +1,58 @@
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+/*
+practical
+*/
+ll a[100005];
+ll tree[400005];
+
+void init(ll x, ll s, ll e)
+{
+    if (s == e) tree[x] = a[s];
+    else
+    {
+        init(x * 2, s, (s + e) / 2);
+        init(x * 2 + 1, (s + e) / 2 + 1, e);
+        tree[x] = tree[x * 2] + tree[x * 2 + 1];
+    }
+}
+
+ll query(ll x, ll s, ll e, ll l, ll r)
+{
+    if (l > e || r < s) return 0ll;
+    if (l <= s && e <= r) return tree[x];
+    else
+    {
+        ll lsum = query(x * 2, s, (s + e) / 2, l, r);
+        ll rsum = query(x * 2 + 1, (s + e) / 2 + 1, e, l, r);
+        return lsum + rsum;
+    }
+}
+
+void update(ll x, ll s, ll e, ll idx, ll val)
+{
+    if (idx<s || idx>e) return;
+    if (s == e)
+    {
+        a[idx] = val;
+        tree[idx] = val;
+    }
+    else
+    {
+        update(x * 2, s, (s + e) / 2, idx, val);
+        update(x * 2 + 1, (s + e) / 2 + 1, e, idx, val);
+        tree[x] = tree[x * 2] + tree[x * 2 + 1];
+    }
+}
+
 /*
 구간 합을 저장하는 세그먼트 트리 구현
 재귀 이용
 Reference: https://book.acmicpc.net/ds/segment-tree
 LIS(Longest Increasing Subsequence) 구현은 12015.cpp 참고
 */
-#include <bits/stdc++.h>
-#define ll long long int
-using namespace std;
+
 /*
 a: 배열 A, 0번 인덱스부터 시작
 tree: 세그먼트 트리, 1번 인덱스부터 시작
