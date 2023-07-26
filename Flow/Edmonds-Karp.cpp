@@ -50,3 +50,59 @@ void EdmondsKarp()
         ans+=cost;
     }
 }
+
+/*
+struct of Edmonds-karp Algorithm
+reference: https://github.com/justiceHui/SSU-SCCC-Study/tree/master/2022-winter-adv    
+*/
+struct maximum_flow
+{
+	struct edge_t { int v, c, r; }; // next destination, capacity, index of reverse node
+	vector<vector<edge_t>> gph;
+	vector<int> dst, prv, idx;
+	maximum_flow(int n) : gph(n), dst(n), prv(n), idx(n) {}
+	void add_edge(int s, int e, int c1, int c2 = 0)
+	{
+		gph[s].push_back({ e, c1, (int)gph[e].size() });
+		gph[e].push_back({ s, c2, (int)gph[s].size() - 1 }); // reverse edge
+	}
+	int augment(int s, int t)
+	{
+		fill(dst.begin(), dst.end(), -1);
+		queue<int> que; 
+		que.push(s); dst[s] = 0;
+		while (!que.empty())
+		{
+			int v = que.front(); que.pop();
+			for (int i = 0; i < gph[v].size(); i++)
+			{
+				const auto& e = gph[v][i];
+				if (e.c > 0 && dst[e.v] == -1)
+				{
+					que.push(e.v); dst[e.v] = dst[v] + 1;
+					prv[e.v] = v; idx[e.v] = i;
+				}
+			}
+		}
+		if (dst[t] == -1) return 0;
+		int flow = 1e9;
+		for (int i = t; i != s; i = prv[i])
+		{
+			const auto& e = gph[prv[i]][idx[i]];
+			flow = min(flow, e.c);
+		}
+		for (int i = t; i != s; i = prv[i])
+		{
+			auto& e = gph[prv[i]][idx[i]];
+			e.c -= flow;
+			gph[e.v][e.r].c += flow;
+		}
+		return flow;
+	}
+	int run(int s, int t)
+	{
+		int flow = 0, path = 0;
+		while (path = augment(s, t)) flow += path;
+		return flow;
+	}
+};
