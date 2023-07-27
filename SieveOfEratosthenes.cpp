@@ -11,11 +11,12 @@ bool check[1000005]; //check[i]=i가 소수이면 false
 void Eratosthenes()
 {
     for(int i=2;i<=1000000;i++) //1은 소수가 아님, 2부터 n까지 돌아야 모든 소수가 배열에 추가된다.
-    {
-      if(check[i]==false) p.push_back(i);
-      for(int j=i*i;j<=n;j+=i) check[j]=true; 
-      //j의 배수는 소수가 아님, i가 너무 크면 i*i대신 2*i로 써야된다. i가 백만인 경우 i*i는 1조로 범위를 넘어가기 때문이다. 
-    }
+      if(!check[i]) 
+      {
+	p.push_back(i);
+      	for(int j=i*i;j<=n;j+=i) check[j]=1; 
+      	//j의 배수는 소수가 아님, i가 너무 크면 i*i대신 2*i로 써야된다. i가 백만인 경우 i*i는 1조로 범위를 넘어가기 때문이다. 
+      }
 }
 
 //간단한 구현
