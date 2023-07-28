@@ -14,7 +14,7 @@ ll dp[100005];
 struct LinearFunc //f(x)=ax+b, x>=s
 {
     ll a, b;
-    double s; //시작점
+    double s; // 선분의 시작점
     LinearFunc(): LinearFunc(1, 0){}
     LinearFunc(ll a1, ll b1): a(a1), b(b1), s(0){}
 };
@@ -32,7 +32,7 @@ void solve()
     
     //dp[0]=0, dp테이블을 채우면서 "f(.) = B[i]*x + dp[i]"를 스택에 쌓음
     ll dp[100005]={0};
-    LinearFunc f[100005];
+    LinearFunc f[100005]; // 필요한 선분들만 저장된다
     int top=0;
     for(ll i=1;i<n;i++)
     {
