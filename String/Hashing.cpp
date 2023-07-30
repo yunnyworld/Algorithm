@@ -54,7 +54,7 @@ template<ll P, ll M> struct Hashing
     }
 };
 
-Hashing<524287, 998244353> H1;
+Hashing<524287, 998244353> H1; // 항상 해쉬 충돌 주의!
 
 /*
 Hashing without get (simple implementation)
