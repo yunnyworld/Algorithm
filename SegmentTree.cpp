@@ -25,9 +25,9 @@ struct ST
 		if (l <= s && e <= r) return tree[x];
 		else
 		{
-			ll lsum = query(x * 2, s, (s + e) / 2, l, r);
-			ll rsum = query(x * 2 + 1, (s + e) / 2 + 1, e, l, r);
-			return lsum + rsum;
+			ll L = query(x * 2, s, (s + e) / 2, l, r);
+			ll R = query(x * 2 + 1, (s + e) / 2 + 1, e, l, r);
+			return L + R;
 		}
 	}
 	void update(ll x, ll s, ll e, ll idx, ll val)
@@ -36,7 +36,7 @@ struct ST
 		if (s == e)
 		{
 			a[idx] = val;
-			tree[idx] = val;
+			tree[x] = val;
 		}
 		else
 		{
