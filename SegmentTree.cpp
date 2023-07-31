@@ -2,6 +2,52 @@
 #define ll long long int
 using namespace std;
 /*
+struct version
+*/
+struct ST
+{
+	ll n;
+	vector<ll> a, tree;
+	ST(ll n) :n(n), a(n + 1), tree(4 * (n + 1)) {}
+	void init(ll x, ll s, ll e)
+	{
+		if (s == e) tree[x] = a[s];
+		else
+		{
+			init(x * 2, s, (s + e) / 2);
+			init(x * 2 + 1, (s + e) / 2 + 1, e);
+			tree[x] = tree[x * 2] + tree[x * 2 + 1];
+		}
+	}
+	ll query(ll x, ll s, ll e, ll l, ll r)
+	{
+		if (l > e || r < s) return 0ll;
+		if (l <= s && e <= r) return tree[x];
+		else
+		{
+			ll lsum = query(x * 2, s, (s + e) / 2, l, r);
+			ll rsum = query(x * 2 + 1, (s + e) / 2 + 1, e, l, r);
+			return lsum + rsum;
+		}
+	}
+	void update(ll x, ll s, ll e, ll idx, ll val)
+	{
+		if (idx<s || idx>e) return;
+		if (s == e)
+		{
+			a[idx] = val;
+			tree[idx] = val;
+		}
+		else
+		{
+			update(x * 2, s, (s + e) / 2, idx, val);
+			update(x * 2 + 1, (s + e) / 2 + 1, e, idx, val);
+			tree[x] = tree[x * 2] + tree[x * 2 + 1];
+		}
+	}
+};
+
+/*
 practical
 */
 ll a[100005];
