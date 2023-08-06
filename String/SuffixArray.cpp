@@ -27,7 +27,7 @@ struct SuffixArray
 		vector<ll> tmp;
 		for (int i = 1; i <= n; i++)
 		{
-			sfx[i] = i;
+			sfx[i] = i; // neccessary?
 			tmp.push_back(s[i]);
 		}
 		sort(tmp.begin(), tmp.end());
