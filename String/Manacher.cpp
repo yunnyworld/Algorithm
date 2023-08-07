@@ -36,4 +36,5 @@ struct manacher
             }
         }
     }
+    // real index of palindrome(0-base): [(i-ma[i]+1)/2, (i+ma[i]-1)/2]
 };
