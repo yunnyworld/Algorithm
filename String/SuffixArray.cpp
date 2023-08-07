@@ -10,7 +10,7 @@ struct SuffixArray
 {
 	ll n;
 	string s;
-	vector<ll> sfx, g, ng, cnt, idx;
+	vector<ll> sfx, g, ng, cnt, idx; // sfx[i] := s에서 i번째 접미사의 첫 글자 위치
 	SuffixArray(string& str)
 	{
 		s = str;
