@@ -9,10 +9,10 @@ https://plzrun.tistory.com/entry/Counting-Sort-Radix-Sort
 */
 struct SuffixArray
 {
-	ll n;
+	int n;
 	string s;
-	vector<ll> sfx, g, ng, cnt, idx; // sfx[i] := s에서 사전 순 i번째 접미사의 첫 글자 위치
-	vector<ll> rev, lcp; // lcp[i] := suffix array상에서 i번째 접미사와 i-1번째 접미사의 Longest Common Prefix
+	vector<int> sfx, g, ng, cnt, idx; // sfx[i] := s에서 사전 순 i번째 접미사의 첫 글자 위치
+	vector<int> rev, lcp; // lcp[i] := suffix array상에서 i번째 접미사와 i-1번째 접미사의 Longest Common Prefix
 	SuffixArray(string& str)
 	{
 		s = str;
@@ -29,7 +29,7 @@ struct SuffixArray
 	void getsfx()
 	{
 		s = ' ' + s;
-		vector<ll> tmp;
+		vector<int> tmp;
 		for (int i = 1; i <= n; i++)
 		{
 			sfx[i] = i; // neccessary?
@@ -62,7 +62,7 @@ struct SuffixArray
 	void getlcp()
 	{
 		for (int i = 1; i <= n; i++) rev[sfx[i]] = i;
-		ll now = 0;
+		int now = 0;
 		for (int i = 1; i <= n; i++)
 		{
 			if (rev[i] - 1 >= 1)
