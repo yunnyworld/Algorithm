@@ -42,9 +42,15 @@ KMP
             - P[0 ... j-1]의 Suffix와 일치하는 P의 Prefix를 찾아야 함
             - S[i]=P[j]를 만족할 때까지 F[j-1], F[F[j-1]], ... 를 따라가면 됨
 
-
 Reference: ICPC Sinchon 22 Summer 7회차 문자열 
 https://justicehui.github.io/hard-algorithm/2019/01/16/KMP/ : 나정휘 강사 블로그 KMP 설명 참고하기
+
+    - 문자열의 주기 찾기(실패 함수의 정의 이용)
+        - "0 <= i < L-c 인 모든 i에 대해 s[i] = s[i+c]"이면 c는 문자열 s의 주기이다. (L은 s의 길이)
+        - c가 최소일 때가 문자열의 주기가 최대이다.
+        - c의 최솟값 = L - fail[L-1]
+        - 실패 함수의 정의에 의해 "0 <= i < F[L-1] 인 모든 i에 대해 s[i] = s[i + (L - fail[L-1])]"가 정확히 성립한다.
+        - 이때, L - fail[L-1]이 L의 약수여야 주기가 존재한다.
 */
 //실패함수
 //i=0이면 자기 자신을 찾아버리니까 안 됨
