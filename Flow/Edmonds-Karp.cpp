@@ -60,7 +60,7 @@ struct EdmondsKarp
 	struct edge_t { int v, c, r; }; // next destination, capacity, index of reverse node
 	vector<vector<edge_t>> gph;
 	vector<int> dst, prv, idx;
-	maximum_flow(int n) : gph(n + 1), dst(n + 1), prv(n + 1), idx(n + 1) {} // '+1' for 1-base nodes
+	EdmondsKarp(int n) : gph(n + 1), dst(n + 1), prv(n + 1), idx(n + 1) {} // '+1' for 1-base nodes
 	void add_edge(int s, int e, int c1, int c2 = 0)
 	{
 		gph[s].push_back({ e, c1, (int)gph[e].size() });
