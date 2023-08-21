@@ -5,7 +5,7 @@ using namespace std;
 Euler Phi function (오일러 피 함수)
 - E(x) = x이하의 자연수 중 x와 서로소인 자연수의 개수
 - E(p) = p-1 (p는 소수)
-- E(p^n) = p^n - p^(n-1) (by definition)
+- E(p^n) = p^n - p^(n-1) (p^n개의 자연수 중, p의 배수의 개수 빼기)
          = (p-1)*p^(n-1) - ㄱ
 - E(p*q) = E(p)*E(q) (p와 q가 서로소일때)
 - m = p1^n1 * p2^n2 * ... * pk^nk 일때, ㄱ에 의해
