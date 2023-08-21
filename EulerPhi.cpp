@@ -15,14 +15,13 @@ Euler Phi function (오일러 피 함수)
 */
 ll phi(ll n)
 {
-         ll res = n;
+         ll ret = n;
          for (ll p = 2; p * p <= n; p++)
-                  if (n % p == 0)
-                  {
-                           while (n % p == 0) n /= p;
-                           res = res * (p - 1) / p;
-                  }
-         // n is prime
-         if (n > 1) res = res * (n - 1) / n;
-         return res;
+         {
+                  if (n % p) continue;
+                  while (n % p == 0) n /= p;
+                  ret = ret * (p - 1) / p;
+         }
+         if (n > 1) ret = ret * (n - 1) / n; // n is prime
+         return ret;
 }
