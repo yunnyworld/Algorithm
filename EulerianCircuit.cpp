@@ -50,7 +50,7 @@ void solve()
 		}
 		else if (deg[i] > 0) s = i;
 	}
-	dfs(s);
+	Eulerian(s);
 	// 단방향에서는 reverse(all(ans)); 가 필요하다
 }
 
