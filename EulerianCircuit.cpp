@@ -21,7 +21,7 @@ void Eulerian(int now)
 		{
 			mat[now][nxt]--;
 			mat[nxt][now]--;
-			dfs(nxt);
+			Eulerian(nxt);
 		}
 	}
 	ans.push_back(now);
