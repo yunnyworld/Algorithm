@@ -11,22 +11,17 @@ Euler Phi function (오일러 피 함수)
 - m = p1^n1 * p2^n2 * ... * pk^nk 일때, ㄱ과 ㄴ에 의해
   E(m) = m*((p1-1)/p1)*((p2-1)/p2)*...*((pk-1)/pk) 이다.
 - 에라토스테네스 체에서 소인수분해를 따라가다가 처음보는 소인수 p가 나오면 m에다가 (p-1)/p를 곱해주면 된다.
-- O(nlog(logn))
 */
 ll phi(ll n)
 {
-    ll res = n;
-    for (ll p = 2; p * p <= n; p++)
-        if (n % p == 0)
-        {
-            while (n % p == 0) n /= p;
-            res /= p;
-            res *= p - 1;
-        }
-    if (n > 1)
-    {
-        res /= n;
-        res *= n - 1;
-    }
-    return res;
+         ll res = n;
+         for (ll p = 2; p * p <= n; p++)
+                  if (n % p == 0)
+                  {
+                           while (n % p == 0) n /= p;
+                           res = res * (p - 1) / p;
+                  }
+         // n is prime
+         if (n > 1) res = res * (n - 1) / n;
+         return res;
 }
