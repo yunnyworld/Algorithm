@@ -2,6 +2,49 @@
 #define ll long long int
 using namespace std;
 /*
+less memory using Trie code
+*/
+struct Trie
+{
+    vector<Trie*> nxt;
+    vector<int> idx;
+    ~Trie()
+    {
+        for (int i = 0; i < nxt.size(); i++) delete nxt[i];
+    }
+    int find_idx(int x)
+    {
+        for (int i = 0; i < idx.size(); i++) if (idx[i] == x) return i;
+        return -1;
+    }
+    void insert(const char* s)
+    {
+        if (*s == 0) { return; } //null character
+        int i = find_idx(*s - 'a');
+        if (i < 0)
+        {
+            Trie* new_child = new Trie();
+            nxt.push_back(new_child);
+            idx.push_back(*s - 'a');
+            i = nxt.size() - 1;
+        }
+	// do something
+        nxt[i]->insert(s + 1);
+    }
+    void find(const char* s)
+    {
+        if (*s == 0) return;
+        int i = find_idx(*s - 'a');
+        if (i > -1)
+        {
+            // do something
+            nxt[i]->find(s + 1);
+        }
+        return;
+    }
+};
+
+/*
 트라이(Trie): 문자열의 집합을 표현하는 트리 자료구조 
 Reference: 프로그래밍 대회에서 배우는 알고리즘 문제해결전략 p783
 */
